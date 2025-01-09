@@ -3,6 +3,7 @@ export default function Form({isLoggedIN, setIsLoggedIn})
 {
 
   return<div>
+    <h1>Parent Componenet</h1>
     <label for="username">Username:</label>
     <input id="username" type="text"></input><br/><br/>
     <label for="password">Password:</label>
