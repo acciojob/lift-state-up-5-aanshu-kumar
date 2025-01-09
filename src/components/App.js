@@ -15,7 +15,8 @@ const App = () => {
 
 function Form({isLoggedIN, setIsLoggedIn})
 {
-  return<div>   
+
+  return<div>
     <label for="username">Username:</label>
     <input id="username" type="text"></input><br/><br/>
     <label for="password">Password:</label>
