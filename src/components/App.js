@@ -3,30 +3,20 @@ import React, { useState } from "react";
 import './../styles/App.css';
 
 const App = () => {
-  const [isLoggedIn,setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
   return (
-    <div>
-      <h1>Parent Componenet</h1>
-      {!isLoggedIn ? <Form isLoggedIN={isLoggedIn} setIsLoggedIn = {setIsLoggedIn}></Form> : <p>You are logged in!</p> }
-      
+    <div className="app">
+      <h1>{isLoggedIn ? "Welcome, User!" : "Please Log In"}</h1>
+      {!isLoggedIn && <LoginForm onLogin={handleLogin} />}
     </div>
-  )
-}
+  );
+};
 
-function Form({isLoggedIN, setIsLoggedIn})
-{
-
-  return<div>
-    <label for="username">Username:</label>
-    <input id="username" type="text"></input><br/><br/>
-    <label for="password">Password:</label>
-    <input id="password" type="password"></input><br/><br/>
-    <button onClick={()=>{
-    setIsLoggedIn(!isLoggedIN)
-  }}>Login</button>
-  </div> 
-}
-
-export default App
+export default App;
 
 
