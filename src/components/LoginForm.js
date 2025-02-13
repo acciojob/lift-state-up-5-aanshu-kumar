@@ -1,6 +1,5 @@
-
 import React, { useState } from "react";
-import "./styles/App.css";
+import PropTypes from "prop-types"; // For type checking
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -8,9 +7,9 @@ const LoginForm = ({ onLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add logic to validate credentials if needed
-    if (username && password) {
-      onLogin(); // Call the parent's function to update the login state
+    // Basic validation
+    if (username.trim() && password.trim()) {
+      onLogin(); // Lifting state up to parent
     } else {
       alert("Please enter both username and password.");
     }
@@ -25,6 +24,7 @@ const LoginForm = ({ onLogin }) => {
           id="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -34,11 +34,17 @@ const LoginForm = ({ onLogin }) => {
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
       </div>
       <button type="submit">Log In</button>
     </form>
   );
+};
+
+// PropType validation
+LoginForm.propTypes = {
+  onLogin: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
